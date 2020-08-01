@@ -36,6 +36,14 @@ module R00lz
       e = ERB.new(File.read(template))
       e.result(b)
     end
+
+    def request
+      @request ||= Rack::Request.new(env)
+    end
+
+    def params
+      request.params
+    end
   end
 
   class Error < StandardError; end
